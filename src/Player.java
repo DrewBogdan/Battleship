@@ -19,7 +19,8 @@ public class Player {
 
         if(userIn.equals("1")) {
             System.out.println("What would you like your name to be?");
-            this.name = input.nextLine();
+            Scanner inputName = new Scanner(System.in);
+            this.name = inputName.nextLine();
         }
         else if(userIn.equals("2")) {
             System.out.println("Under Construction");
@@ -32,6 +33,8 @@ public class Player {
 
     private void makeGrid() {
         grid = new Grid();
-        grid.printOpponent();
+        grid.printGrid("player");
+        grid.printGrid("opponent");
+
     }
 }
