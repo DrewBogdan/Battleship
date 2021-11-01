@@ -31,10 +31,10 @@ public class Grid {
                     System.out.print(" 0 ");
                 }
                 else if(y == 0) {
-                    System.out.print(" " + (char)('A' + (x-1)) + " ");
+                    System.out.print(Colors.PURPLE + " " + (char)('A' + (x-1)) + " " + Colors.BASE);
                 }
                 else if(x == 0) {
-                    System.out.print(" " + (y) + " ");
+                    System.out.print(Colors.PURPLE + " " + (y) + " " + Colors.BASE);
                 }
                 else {
                     if(type.equals("player")) {
@@ -49,6 +49,21 @@ public class Grid {
         }
     }
 
+    public boolean setShip(String name, String direction, int size) {
+        if (direction.equals("up")) {
+
+        }
+        else if (direction.equals("down")) {
+
+        }
+        else if (direction.equals("right")) {
+
+        }
+        else if (direction.equals("left")) {
+
+        }
+
+    }
 }
 
 class GridTile {
@@ -75,36 +90,36 @@ class GridTile {
     public void printOpponent() {
         if(hit) {
             if(type.equals("water")) {
-                System.out.print(" O ");
+                System.out.print(Colors.YELLOW + " O " + Colors.YELLOW);
             }
             else {
-                System.out.print(" X ");
+                System.out.print(Colors.RED + " X " + Colors.BASE);
             }
         }
         else {
-            System.out.print(" ~ ");
+            System.out.print(Colors.BLUE + " ~ " + Colors.BASE);
         }
     }
 
     public void printPlayer() {
         if(hit) {
             if(type.equals("water")) {
-                System.out.print(" O ");
+                System.out.print(Colors.YELLOW + " O " + Colors.YELLOW);
             }
             else {
-                System.out.print(" X ");
+                System.out.print(Colors.RED + " X " + Colors.BASE);
             }
         }
         else {
             if(type.equals("water")) {
-                System.out.print(" ~ ");
+                System.out.print(Colors.BLUE + " ~ " + Colors.BASE);
             }
             else {
                 if(shipDirection.equals("up") || shipDirection.equals("down")) {
-                    System.out.print("| |");
+                    System.out.print(Colors.BLACK + "| |" + Colors.BASE);
                 }
                 else {
-                    System.out.print(" = ");
+                    System.out.print(Colors.BLACK + " = " + Colors.BLACK);
                 }
             }
         }

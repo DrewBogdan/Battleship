@@ -1,10 +1,14 @@
 import javax.sound.midi.Soundbank;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Player {
 
     private String name;
+
     private Grid grid;
+
+    private ArrayList<Ship> ships;
 
     public Player(String name) {
         makePlayer(name);
@@ -33,8 +37,34 @@ public class Player {
 
     private void makeGrid() {
         grid = new Grid();
+        makeShips();
+    }
+
+    private void makeShips() {
+        ships = initializeShipArray();
         grid.printGrid("player");
-        grid.printGrid("opponent");
+        System.out.println("Where would you like to put your ships " + name + "?");
+        System.out.println("Just type the starting coordinate(ex. A4)");
+        for(int count = 0; count < ships.size(); ++count) {
+            System.out.println("Starting with the " + ships.get(count));
+            Scanner startInput = new Scanner(System.in);
+            String shipStart = startInput.next();
+            System.out.println("Which direction? (up, down, left, right)");
+            startInput = new Scanner(System.in);
+            String shipDirection = startInput.next();
+            ships.get(count).setShip(shipDirection,shipStart, grid);
+        }
 
     }
+
+    private ArrayList<Ship> initializeShipArray() {
+        ArrayList<Ship> ships = new ArrayList<>();
+        ships.add(new Cruiser());
+        ships.add(new Destroyer());
+        ships.add(new Battleship());
+        ships.add(new Cruiser());
+        ships.add(new Scout());
+        return ships;
+    }
+
 }
